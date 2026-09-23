@@ -1,0 +1,6 @@
+{
+  "name": "BMW Global Flagship",
+  "description": "Experience the Ultimate Driving Machine. Explore BMW i electric luxury, high-performance BMW M engineering, 360° Studio Configurator, and acoustic soundscape simulation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

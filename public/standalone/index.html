@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMW Global Flagship · Standalone Edition</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="m-stripe"></div>
+
+  <!-- Header -->
+  <header class="top-header">
+    <div class="brand-zone">
+      <div class="bmw-logo-roundel">
+        <div class="bmw-q1"></div>
+        <div class="bmw-q2"></div>
+        <div class="bmw-q3"></div>
+        <div class="bmw-q4"></div>
+      </div>
+      <div class="brand-title">BMW <span>Flagship</span></div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#studio" class="nav-link">360° Studio</a>
+      <a href="#fleet" class="nav-link">Fleet Lineup</a>
+      <a href="#acoustics" class="nav-link">Sound Simulator</a>
+      <a href="#technology" class="nav-link">Innovation</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn-primary" onclick="openTestDriveModal('bmw-i7')">Book Test Drive</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-backdrop-glow"></div>
+    <div class="hero-content">
+      <div class="hero-kicker">BMW Official Global Showcase</div>
+      <h1 class="hero-title">The Ultimate Driving Machine.</h1>
+      <p class="hero-description">
+        Witness the convergence of visionary electric luxury and unrelenting BMW M motorsport performance.
+      </p>
+
+      <div class="hero-telemetry-grid">
+        <div class="stat-item">
+          <div class="stat-val">3.5s</div>
+          <div class="stat-label">0–100 km/h Launch</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">748 hp</div>
+          <div class="stat-label">Peak M Output</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">625 km</div>
+          <div class="stat-label">Pure Electric WLTP</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Variable xDrive</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 360 Studio Section -->
+  <section id="studio" class="section">
+    <div class="section-header">
+      <div class="section-kicker">Precision Configurator</div>
+      <h2 class="section-title">Interactive 360° Studio</h2>
+      <p class="section-subtitle">
+        Drag to rotate through all 36 dynamic angles. Customize factory paint finishes, aero wheels, and M caliper accents.
+      </p>
+    </div>
+
+    <div class="studio-box">
+      <div class="studio-canvas-wrap" id="studioCanvasWrap">
+        <canvas id="car360Canvas"></canvas>
+        <div class="angle-badge" id="angleBadge">0° · Frame 1/36</div>
+        <div class="drag-hint">↔ Drag horizontally to rotate 360°</div>
+      </div>
+
+      <div class="studio-controls">
+        <div>
+          <div class="control-group-title">Authentic Exterior Paint</div>
+          <div class="color-palette">
+            <button class="color-dot-btn active" style="background:#114B3F;" data-color="#114B3F" title="Isle of Man Green Metallic"></button>
+            <button class="color-dot-btn" style="background:#0C2340;" data-color="#0C2340" title="Tanzanite Blue II"></button>
+            <button class="color-dot-btn" style="background:#4A4E54;" data-color="#4A4E54" title="Frozen Pure Grey"></button>
+            <button class="color-dot-btn" style="background:#E8ECEF;" data-color="#E8ECEF" title="Alpine White"></button>
+            <button class="color-dot-btn" style="background:#3D3C38;" data-color="#3D3C38" title="Dravit Grey"></button>
+            <button class="color-dot-btn" style="background:#8C1217;" data-color="#8C1217" title="Fire Red Metallic"></button>
+            <button class="color-dot-btn" style="background:#141416;" data-color="#141416" title="Black Sapphire"></button>
+          </div>
+        </div>
+
+        <div>
+          <div class="control-group-title">Aerodynamic Wheel Selection</div>
+          <div class="wheel-selector">
+            <button class="option-btn wheel-opt-btn active" data-wheel="20-aero">20" M Aerodynamic 939 M</button>
+            <button class="option-btn wheel-opt-btn" data-wheel="21-double-spoke">21" M Double-Spoke 918 M</button>
+            <button class="option-btn wheel-opt-btn" data-wheel="22-individual">22" BMW Individual 1055 I</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="control-group-title">Rotator Controls</div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button id="autoSpinBtn" class="btn-outline" style="flex:1;">Auto-Spin 360°</button>
+            <button id="resetAngleBtn" class="btn-outline" style="flex:1;">Reset (0°)</button>
+          </div>
+          <button class="btn-primary" style="width: 100%; margin-top: 0.75rem;" onclick="openTestDriveModal('bmw-i7')">Book Configured Vehicle</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fleet Lineup -->
+  <section id="fleet" class="section">
+    <div class="section-header">
+      <div class="section-kicker">Flagship Portfolio</div>
+      <h2 class="section-title">BMW Fleet Lineup</h2>
+      <p class="section-subtitle">
+        Explore high-performance BMW M machinery, visionary all-electric BMW i models, and iconic luxury Sports Activity Vehicles.
+      </p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Models</button>
+      <button class="filter-btn" data-filter="m">BMW M High Performance</button>
+      <button class="filter-btn" data-filter="electric">BMW i 100% Electric</button>
+      <button class="filter-btn" data-filter="x">BMW X Series (SAV)</button>
+      <button class="filter-btn" data-filter="sedan">Sedans & Coupes</button>
+    </div>
+
+    <div class="fleet-grid" id="fleetGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Sound Simulator -->
+  <section id="acoustics" class="section">
+    <div class="section-header">
+      <div class="section-kicker">Acoustic Engineering</div>
+      <h2 class="section-title">BMW Acoustic & Engine Sound Simulator</h2>
+      <p class="section-subtitle">
+        Compare Hans Zimmer's visionary BMW IconicSounds Electric with the high-octane roar of a twin-turbocharged 4.4L BMW M V8.
+      </p>
+    </div>
+
+    <div class="sound-box">
+      <div class="sound-mode-tabs">
+        <button class="sound-tab-btn active" data-sound="ev">BMW IconicSounds Electric</button>
+        <button class="sound-tab-btn" data-sound="v8">4.4L M TwinPower Turbo V8</button>
+      </div>
+
+      <div class="sound-cockpit">
+        <div class="rpm-dial-container">
+          <div class="stat-label" id="soundModeTitle">BMW IconicSounds Electric (Hans Zimmer)</div>
+          <div class="rpm-number" id="rpmDisplay">800</div>
+          <div class="stat-label">Revolutions Per Minute</div>
+        </div>
+
+        <div>
+          <button id="throttleBtn" class="throttle-btn">
+            HOLD THROTTLE PEDAL TO REV
+          </button>
+          <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            Synthesized live via HTML5 Web Audio API. Press & hold to accelerate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Innovation -->
+  <section id="technology" class="section">
+    <div class="section-header">
+      <div class="section-kicker">Pioneering Progress</div>
+      <h2 class="section-title">Forwardism & Future Technologies</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+      <div style="background: var(--bg-surface); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.5rem;">01. BMW eDrive Gen-6</h3>
+        <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6;">
+          Next-generation cylindrical battery cells delivering 30% faster DC charging, 30% more WLTP range, and an 800-volt high-voltage architecture.
+        </p>
+      </div>
+      <div style="background: var(--bg-surface); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.5rem;">02. Circular Economy</h3>
+        <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6;">
+          Re:Think, Re:Duce, Re:Use, Re:Cycle. Up to 50% secondary materials utilized throughout the vehicle lifecycle with 100% green energy plants.
+        </p>
+      </div>
+      <div style="background: var(--bg-surface); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.5rem;">03. Driving Assistant Pro</h3>
+        <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6;">
+          Hands-free Highway Assistant up to 130 km/h with world-first Active Lane Change with eye confirmation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Drive Modal -->
+  <div id="testDriveModal" class="modal-backdrop">
+    <div class="modal-card">
+      <button class="modal-close-btn close-modal-btn">&times;</button>
+      <h2 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem;">Book Flagship Test Drive</h2>
+      <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1.5rem;">
+        Experience ultimate performance firsthand at an official BMW flagship center.
+      </p>
+
+      <form id="testDriveForm">
+        <div class="form-group">
+          <label class="form-label">Selected Model</label>
+          <select id="driveModelSelect" class="form-select">
+            <option value="bmw-i7">BMW i7 xDrive60</option>
+            <option value="bmw-ix">BMW iX M60</option>
+            <option value="bmw-m3">BMW M3 Competition</option>
+            <option value="bmw-m5">BMW M5 Sedan</option>
+            <option value="bmw-xm">BMW XM Label Red</option>
+            <option value="bmw-x5">BMW X5 xDrive50e</option>
+            <option value="bmw-x7">BMW X7 M60i xDrive</option>
+            <option value="bmw-i4">BMW i4 M50 Gran Coupé</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Flagship Dealership Location</label>
+          <select class="form-select" required>
+            <option value="muc">BMW Welt & Niederlassung Munich (Germany)</option>
+            <option value="nyc">BMW of Manhattan Flagship Center (USA)</option>
+            <option value="lon">BMW Park Lane Showroom London (UK)</option>
+            <option value="tok">BMW Tokyo Bay Experience Center (Japan)</option>
+            <option value="dxb">BMW AGMC Downtown Prestige Centre (Dubai)</option>
+            <option value="par">BMW Brand Store Paris George V (France)</option>
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Preferred Date</label>
+            <input type="date" class="form-input" required value="2026-10-15">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Time Slot</label>
+            <select class="form-select">
+              <option>10:00 AM (Morning Session)</option>
+              <option>02:00 PM (Afternoon Session)</option>
+              <option>05:30 PM (Sunset Track Session)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="e.g. Alexander von Stein" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="name@domain.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" placeholder="+49 170 1234567" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%; margin-top: 1rem; padding: 0.85rem;">
+          Confirm & Issue Digital Test Drive Pass
+        </button>
+      </form>
+
+      <div id="bookingConfirmation"></div>
+    </div>
+  </div>
+
+  <!-- Specs Modal -->
+  <div id="specsModal" class="modal-backdrop">
+    <div class="modal-card">
+      <button class="modal-close-btn close-modal-btn">&times;</button>
+      <div id="specsModalBody"></div>
+      <button class="btn-outline close-modal-btn" style="width: 100%; margin-top: 1.5rem;">Close Technical View</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="m-stripe" style="margin-bottom: 2rem;"></div>
+    <p>© 2026 BMW AG. All rights reserved. The Ultimate Driving Machine.</p>
+    <p style="margin-top: 0.5rem;">Pure Standalone Edition · Runs in any modern web browser without dependencies.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
